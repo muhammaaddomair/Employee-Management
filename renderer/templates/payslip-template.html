@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payslip</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f8fafc;
+      }
+      .sheet {
+        position: relative;
+        width: 794px;
+        min-height: 1123px;
+        margin: 0 auto;
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+      }
+      .overlay {
+        position: absolute;
+        inset: 0;
+        padding: 150px 56px 56px 56px;
+        color: #111827;
+      }
+      .title {
+        font-size: 30px;
+        font-weight: 700;
+        margin: 0 0 6px 0;
+      }
+      .subtitle {
+        font-size: 13px;
+        color: #4b5563;
+        margin: 0 0 26px 0;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 22px;
+        font-size: 13px;
+        margin-bottom: 28px;
+      }
+      .label {
+        color: #6b7280;
+        font-weight: 600;
+      }
+      .value {
+        color: #111827;
+        font-weight: 500;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: rgba(255, 255, 255, 0.9);
+      }
+      th,
+      td {
+        border: 1px solid #d1d5db;
+        padding: 10px 12px;
+        font-size: 13px;
+        text-align: left;
+      }
+      th {
+        background: #f3f4f6;
+        color: #374151;
+      }
+      td:last-child,
+      th:last-child {
+        text-align: right;
+      }
+      .net-row td {
+        font-weight: 700;
+        background: #dcfce7;
+        color: #166534;
+      }
+      .footer {
+        margin-top: 34px;
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        font-size: 13px;
+      }
+      .footer-block {
+        flex: 1;
+      }
+      .signature {
+        margin-top: 44px;
+        border-top: 1px solid #9ca3af;
+        padding-top: 8px;
+        width: 240px;
+        color: #374151;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sheet" style="background-image: url('{{LETTERHEAD_URL}}');">
+      <div class="overlay">
+        <h1 class="title">Payslip</h1>
+        <p class="subtitle">{{COMPANY_NAME}} | {{COMPANY_ADDRESS}} | {{COMPANY_CONTACT}}</p>
+
+        <section class="grid">
+          <div><span class="label">Employee Name:</span> <span class="value">{{EMPLOYEE_NAME}}</span></div>
+          <div><span class="label">Employee Code:</span> <span class="value">{{EMPLOYEE_CODE}}</span></div>
+          <div><span class="label">Designation:</span> <span class="value">{{DESIGNATION}}</span></div>
+          <div><span class="label">Department:</span> <span class="value">{{DEPARTMENT}}</span></div>
+          <div><span class="label">Month / Year:</span> <span class="value">{{MONTH_YEAR}}</span></div>
+          <div><span class="label">Generated Date:</span> <span class="value">{{GENERATED_DATE}}</span></div>
+        </section>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Salary Component</th>
+              <th>Amount (USD)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Basic Salary</td>
+              <td>{{BASIC_SALARY}}</td>
+            </tr>
+            <tr>
+              <td>Allowances</td>
+              <td>{{ALLOWANCES}}</td>
+            </tr>
+            <tr>
+              <td>Bonus</td>
+              <td>{{BONUS}}</td>
+            </tr>
+            <tr>
+              <td>Deductions</td>
+              <td>{{DEDUCTIONS}}</td>
+            </tr>
+            <tr>
+              <td>Tax</td>
+              <td>{{TAX}}</td>
+            </tr>
+            <tr class="net-row">
+              <td>Net Salary</td>
+              <td>{{NET_SALARY}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="footer">
+          <div class="footer-block">
+            <div><span class="label">Payment Mode:</span> <span class="value">Bank Transfer</span></div>
+            <div style="margin-top: 8px;"><span class="label">Payslip ID:</span> <span class="value">{{PAYSLIP_ID}}</span></div>
+          </div>
+          <div class="footer-block" style="display: flex; justify-content: flex-end;">
+            <div class="signature">Authorized Signature</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
